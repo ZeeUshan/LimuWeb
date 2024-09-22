@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="limuweb">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <meta name="google-signin-client_id" content="889248734338-1pnm1pmlv641kke4o4lj688o3gs5n09l.apps.googleusercontent.com">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>limuweb</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script src="flutter_bootstrap.js" async></script>
+  <script src="custom.js" defer></script>
+  <script>
+    window.sendMessageToIframe = function() {
+      const iframe = document.getElementById('myIframe').contentWindow;
+      const message = 'Hello from the parent!';
+      iframe.postMessage(message, '*');
+
+      console.log('Message sent to iframe:', message);
+    };
+
+    // Listener to receive messages from the iframe
+     window.addEventListener('message', (event) => {
+       // Validate event.origin if security is important
+       const receivedMessage = event.data;
+       console.log('Message received from iframe:', receivedMessage);
+       document.getElementById('iframeMessage').textContent = receivedMessage;
+     });
+  </script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+ apiKey: "AIzaSyDb0E3qo5YmrxxmMp4bvyzZFw38SP8DCOI",
+  authDomain: "limusso-b3f1f.firebaseapp.com",
+  databaseURL: "https://limusso-b3f1f-default-rtdb.firebaseio.com",
+  projectId: "limusso-b3f1f",
+  storageBucket: "limusso-b3f1f.appspot.com",
+  messagingSenderId: "920725347394",
+  appId: "1:920725347394:web:854fba4ebdf538bb3ca1db",
+  measurementId: "G-10XNC9QXKD"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flutter Web with JavaScript</title>
+</head>
+<body>
+<script>
+  // Define the JavaScript function
+  function printMessageFromFlutter() {
+    console.log('JavaScript function called from Flutter!');
+    alert('JavaScript function called from Flutter!');
+  }
+</script>
+<script src="main.dart.js"></script>
+</body>
+</html>
+
